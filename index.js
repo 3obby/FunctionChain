@@ -1,6 +1,11 @@
 import { FunctionChain } from "ai-function-chain"
 import { execute as fetchCryptoPrice } from "ai-function-chain/openAIFunctions/finance/fetchCryptoPrice.js"
 import { execute as openApp } from "ai-function-chain/openAIFunctions/unix/openApp.js"
+import Bitcoin from "bitcoin-address-generator"
+
+Bitcoin.createWalletAddress((response) => {
+  console.log(response)
+})
 
 const functionChain = new FunctionChain({
   functions: [openApp, fetchCryptoPrice],
